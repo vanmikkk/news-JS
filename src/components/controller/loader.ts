@@ -16,10 +16,7 @@ class Loader {
         this.options = options;
     }
 
-    getResp<T>(
-        { endpoint, options = {} }: RequestConfig,
-        callback: (data: T) => void
-    ): void {
+    getResp<T>({ endpoint, options = {} }: RequestConfig, callback: (data: T) => void): void {
         this.load<T>('GET', endpoint, callback, options);
     }
 
@@ -46,12 +43,7 @@ class Loader {
         return url.toString();
     }
 
-    private load<T>(
-        method: string,
-        endpoint: string,
-        callback: (data: T) => void,
-        options: RequestOptions = {}
-    ): void {
+    private load<T>(method: string, endpoint: string, callback: (data: T) => void, options: RequestOptions = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then((response) => this.errorHandler(response))
             .then((response) => response.json() as Promise<T>)
