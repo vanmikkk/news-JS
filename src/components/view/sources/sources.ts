@@ -1,8 +1,8 @@
 import './sources.css';
-import type { NewsSource } from '../../../types/news';
+import type { ReadonlyNewsSource } from '../../../types/news';
 
 class Sources {
-    draw(data: NewsSource[]): void {
+    draw(data: ReadonlyNewsSource[]): void {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector<HTMLTemplateElement>('#sourceItemTemp');
 
