@@ -8,12 +8,6 @@ export interface NewsSource {
     name: string;
 }
 
-export type ReadonlyNewsSource = Readonly<NewsSource>;
-
-export type NewsSourcePreview = Pick<NewsSource, 'id' | 'name'>;
-
-export type NewsArticleUpdate = Partial<NewsArticle>;
-
 export interface NewsArticle {
     source: NewsSource;
     author: string | null;
@@ -24,6 +18,15 @@ export interface NewsArticle {
     publishedAt: string;
     content: string | null;
 }
+
+export type ReadonlyNewsSource = Readonly<NewsSource>;
+
+export type NewsArticlePreview = Pick<
+    NewsArticle,
+    'title' | 'url' | 'publishedAt' | 'description' | 'urlToImage' | 'author' | 'source'
+>;
+
+export type NewsArticleUpdate = Partial<NewsArticle>;
 
 export interface SourcesResponse {
     status: ApiStatus;
