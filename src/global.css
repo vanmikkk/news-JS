@@ -1,35 +1,124 @@
+:root {
+    color-scheme: dark;
+    --color-background: #10151d;
+    --color-surface: #192330;
+    --color-surface-light: #222f3e;
+    --color-text: #edf4f8;
+    --color-muted: #9aabba;
+    --color-accent: #55d6c2;
+    --color-accent-hover: #83ead9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    scroll-behavior: smooth;
+}
+
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    color: var(--color-text);
+    background:
+        radial-gradient(ellipse at 50% 0%, #203445 0%, transparent 48%),
+        var(--color-background);
+    font-family: Inter, Arial, sans-serif;
 }
 
 header {
-    padding: 10px 30px;
+    padding: 28px clamp(18px, 4vw, 64px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 header h1 {
-    font-size: 40px;
+    margin: 0;
+    font-size: clamp(30px, 4vw, 48px);
     font-weight: 800;
+    letter-spacing: -1.5px;
+    color: var(--color-text);
 }
 
 footer {
-    height: 100px;
+    min-height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+footer .copyright {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-muted);
+    text-align: center;
+}
+
+footer .copyright a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer .copyright a:hover {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+}
+
+.footer__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.footer__link {
+    color: var(--color-muted);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer__link:hover {
+    color: var(--color-accent);
+}
+
+.footer__school {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
+
+.footer__school-logo {
+    display: block;
+    width: 100px;
+    height: 36px;
+    background-image: url('./assets/rs-school-logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transition: opacity 0.2s ease;
 }
-footer .copyright a {
-    color: #444;
+
+.footer__school:hover .footer__school-logo {
+    opacity: 0.75;
 }
-footer .copyright a:hover {
-    color: #555;
+
+@media (max-width: 480px) {
+    .footer__content {
+        gap: 16px;
+    }
+
+    .footer__school-logo {
+        width: 80px;
+        height: 30px;
+    }
 }
-footer .copyright:before {
-    content: '©';
-}
+
